@@ -18,6 +18,6 @@ public class TaskController {
     public TaskModel create(@RequestBody TaskModel taskModel){
          var task = this.taskRepository.save(taskModel);
          return task;
-    }
+    }   
    
 }

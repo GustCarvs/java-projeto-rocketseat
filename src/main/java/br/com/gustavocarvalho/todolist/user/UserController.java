@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 import at.favre.lib.crypto.bcrypt.BCrypt;
     
 
-
 @RestController  //controla todas as rotas/recursos de uma APIrest
 @RequestMapping("/users")   
 public class UserController {
@@ -20,7 +19,6 @@ public class UserController {
     @Autowired //parte do spring que permite não ter que inicializar classes
     private IUserRepository userRepository;
 
-    
 
     @PostMapping("/")
     public ResponseEntity create(@RequestBody UserModel userModel) {
@@ -34,7 +32,6 @@ public class UserController {
 
         userModel.setPassword(passwodHashred);//set a password com o que o user forneceu 
         
-
 
         var userCreated = this.userRepository.save(userModel);
             return ResponseEntity.status(HttpStatus.CREATED).body(userCreated);

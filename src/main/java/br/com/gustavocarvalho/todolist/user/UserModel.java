@@ -26,6 +26,7 @@ public class UserModel {
 
     @CreationTimestamp
     private LocalDateTime createdAt; //local e hora ou apenas hora*
+    
 
 }
 
