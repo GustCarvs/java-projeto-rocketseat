@@ -27,7 +27,7 @@ public class FilterTaskAuth extends OncePerRequestFilter { // filter do spring j
 
         var servletPath = request.getServletPath();
 
-        if (servletPath.equals("/tasks/")) {
+        if (servletPath.startsWith("/tasks/")) {
             // pegar a autenticação
             var authorization = request.getHeader("Authorization");
 
@@ -56,6 +56,7 @@ public class FilterTaskAuth extends OncePerRequestFilter { // filter do spring j
                 // validar senha
                 var passworVerify = BCrypt.verifyer().verify(password.toCharArray(), user.getPassword());
                 if (passworVerify.verified) {
+                    request.setAttribute("idUser", user.getId() );
                     filterChain.doFilter(request, response);
                 } else {
                     response.sendError(401);
